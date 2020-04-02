@@ -27,11 +27,13 @@ defmodule Collab.DataCase do
     end
   end
 
+  alias Ecto.Adapters.SQL.Sandbox
+
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Collab.Repo)
+    :ok = Sandbox.checkout(Collab.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Collab.Repo, {:shared, self()})
+      Sandbox.mode(Collab.Repo, {:shared, self()})
     end
 
     :ok
