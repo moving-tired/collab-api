@@ -1,0 +1,7 @@
+build:
+    docker:
+        webapp: Dockerfile
+release:
+    image: webapp
+run:
+    web: mix phx.server
