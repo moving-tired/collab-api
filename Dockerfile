@@ -17,8 +17,7 @@ COPY . $HOME
 # By using --force, we don’t need to type “Y” to confirm the installation
 # Install rebar (Erlang build tool)
 RUN apk --no-cache add curl 
-RUN mix local.hex --force && mix local.rebar --force && mix do deps.get, compile \
-    && mix compile
+RUN mix local.hex --force && mix local.rebar --force && mix do deps.get, compile
 
 # Migrate Database
 #RUN mix ecto.setup
