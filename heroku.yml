@@ -4,4 +4,4 @@ build:
 release:
     image: webapp
 run:
-    web: mix phx.server
+    webapp: mix phx.server
