@@ -13,6 +13,13 @@ use Mix.Config
 #   url: [host: "example.com", port: 80],
   #cache_static_manifest: "priv/static/cache_manifest.json"
 
+config :collab, CollabWeb.Endpoint,
+  http: [port:  System.get_env("PORT")],
+  debug_errors: true,
+  code_reloader: true,
+  check_origin: false,
+  watchers: []
+
 # Do not print debug messages in production
 config :logger, level: :info
 
