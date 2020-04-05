@@ -14,9 +14,9 @@ COPY . $HOME
 # Install hex package manager
 # By using --force, we don’t need to type “Y” to confirm the installation
 # Install rebar (Erlang build tool)
-RUN apk --no-cache add curl
-RUN mix local.hex --force && mix local.rebar --force && mix deps.get --only prod \
-    && mix deps.compile && mix compile
+RUN apk --no-cache add curl 
+RUN mix local.hex --force && mix local.rebar --force && mix do deps.get, compile \
+    && mix compile
 
 # Migrate Database
 #RUN mix ecto.setup
