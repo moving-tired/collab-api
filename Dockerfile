@@ -6,6 +6,8 @@ FROM elixir:1.9.1-alpine
 ENV PORT=${PORT:-4000}
 ENV MIX_ENV=prod
 ENV HOME=/app
+ARG DATABASE_URL=postgres://postgres:changeme@localhost/collab_dev
+ARG SECRET_KEY_BASE=secret
 
 # Create app directory and copy dependencies
 WORKDIR $HOME
