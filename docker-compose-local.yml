@@ -1,0 +1,64 @@
+version: '3.1'
+
+services:
+  elasticsearch_1:
+    image: elasticsearch:7.6.1
+    container_name: elasticsearch_collaborative_1
+    environment:
+      - node.name=node1
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=node2,node3
+      - cluster.initial_master_nodes=node1,node2,node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+      ports:
+        - 9200:9200
+      networks:
+        - elastic
+  elasticsearch_2:
+    image: elasticsearch:7.6.1
+    container_name: elasticsearch_collaborative_2
+    environment:
+      - node.name=node2
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=node1,node3
+      - cluster.initial_master_nodes=node1,node2,node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+      networks:
+        - elastic
+  elasticsearch_3:
+    image: elasticsearch:7.6.1
+    container_name: elasticsearch_collaborative_3
+    environment:
+      - node.name=node3
+      - cluster.name=es-docker-cluster
+      - discovery.seed_hosts=node2,node1
+      - cluster.initial_master_nodes=node1,node2,node3
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      ulimits:
+        memlock:
+          soft: -1
+          hard: -1
+      networks:
+        - elastic
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: changeme
+
+networks:
+  elasticsearch:
+    drive: bridge
