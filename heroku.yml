@@ -1,7 +1,7 @@
 build:
     docker:
-        webapp: Dockerfile
+        web: Dockerfile
 release:
-    image: webapp
+    image: web
 run:
-    webapp: mix phx.server
+    web: mix phx.server
