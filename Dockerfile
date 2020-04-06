@@ -22,7 +22,7 @@ RUN mix local.hex --force && mix local.rebar --force && mix deps.get && mix deps
 #RUN mix ecto.setup
 
 # Expose port
-#EXPOSE $PORT
+EXPOSE $PORT
 
 # Compile the project
 CMD mix phx.server
