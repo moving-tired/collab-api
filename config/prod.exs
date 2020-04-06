@@ -14,7 +14,6 @@ use Mix.Config
   #cache_static_manifest: "priv/static/cache_manifest.json"
 
 config :collab, CollabWeb.Endpoint,
-  http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "collab-api.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
