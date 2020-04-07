@@ -23,6 +23,10 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :collab, CollabWeb.Guardian,
+  issuer: "collab",
+  secret_key: "+7TJ1rD5vOfjCunB/kmDRky8ymB+dxRclW5QZwnxE+zsecCk/wsEAaqJy022OssF5"
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 

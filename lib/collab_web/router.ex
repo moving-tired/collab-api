@@ -5,7 +5,9 @@ defmodule CollabWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", CollabWeb do
+  scope "/api/v1", CollabWeb do
     pipe_through :api
+
+    post("/user/sign_in", User.SessionController, :create)
   end
 end
