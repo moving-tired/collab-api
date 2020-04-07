@@ -5,7 +5,7 @@ defmodule Collab.CreateUser do
 
   import Ecto.Changeset
 
-  alias Collab.{User, Repo}
+  alias Collab.{Repo, User}
 
   def run(params) do
     %User{}
