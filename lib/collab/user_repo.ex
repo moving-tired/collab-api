@@ -3,7 +3,7 @@ defmodule Collab.UserRepo do
   User repository
   """
 
-  alias Collab.{User, Repo}
+  alias Collab.{Repo, User}
 
   def get_user!(id) do
     Repo.get!(User, id)

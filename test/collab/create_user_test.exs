@@ -1,7 +1,7 @@
 defmodule Collab.CreateUserTest do
   use Collab.DataCase, async: true
 
-  alias Collab.{User, CreateUser}
+  alias Collab.{CreateUser, User}
 
   describe "run/1" do
     test "returns a structure when the params are valid" do

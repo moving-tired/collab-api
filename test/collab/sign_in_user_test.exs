@@ -3,7 +3,7 @@ defmodule Collab.SignInUserTest do
 
   import Collab.Factory
 
-  alias Collab.{User, SignInUser}
+  alias Collab.{SignInUser, User}
 
   describe "run/2" do
     setup do

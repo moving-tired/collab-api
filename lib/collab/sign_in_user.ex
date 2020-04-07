@@ -3,7 +3,7 @@ defmodule Collab.SignInUser do
   Signing in as User
   """
 
-  alias Collab.{User, Repo}
+  alias Collab.{Repo, User}
 
   def run(email, password) do
     case Repo.get_by(User, email: email) do
