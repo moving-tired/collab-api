@@ -3,7 +3,7 @@ defmodule Collab.Repo.Migrations.MissingUserFields do
 
   def change do
     alter table(:users) do
-      add :phone,  :text
+      add :phone, :text
       add :birthday, :date
     end
   end

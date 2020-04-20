@@ -5,7 +5,14 @@ defmodule Collab.CreateUserTest do
 
   describe "run/1" do
     test "returns a structure when the params are valid" do
-      params = %{name: "nogs", email: "nogs@nogs.com", password: "123456", phone: "+551999999999",  birthday: DateTime.utc_now()}
+      params = %{
+        name: "nogs",
+        email: "nogs@nogs.com",
+        password: "123456",
+        phone: "+551999999999",
+        birthday: DateTime.utc_now()
+      }
+
       assert {:ok, %User{} = user} = CreateUser.run(params)
       assert user.name == "nogs"
       assert user.email == "nogs@nogs.com"
@@ -13,13 +20,26 @@ defmodule Collab.CreateUserTest do
     end
 
     test "returns error when name is missing" do
-      params = %{name: "", email: "nogs@nogs.com", password: "123456", phone: "+551999999999",  birthday: DateTime.utc_now()}
+      params = %{
+        name: "",
+        email: "nogs@nogs.com",
+        password: "123456",
+        phone: "+551999999999",
+        birthday: DateTime.utc_now()
+      }
+
       assert {:error, %Ecto.Changeset{} = changeset} = CreateUser.run(params)
       %{name: ["can't be blank"]} = errors_on(changeset)
     end
 
     test "returns error when name phone is missing" do
-      params = %{name: "here", email: "nogs@nogs.com", password: "123456", birthday: DateTime.utc_now()}
+      params = %{
+        name: "here",
+        email: "nogs@nogs.com",
+        password: "123456",
+        birthday: DateTime.utc_now()
+      }
+
       assert {:error, %Ecto.Changeset{} = changeset} = CreateUser.run(params)
       %{phone: ["can't be blank"]} = errors_on(changeset)
     end
