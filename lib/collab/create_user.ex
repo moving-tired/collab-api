@@ -9,8 +9,8 @@ defmodule Collab.CreateUser do
 
   def run(params) do
     %User{}
-    |> cast(params, [:name, :email, :password])
-    |> validate_required([:name, :email, :password])
+    |> cast(params, [:name, :email, :password, :phone, :birthday])
+    |> validate_required([:name, :email, :password, :phone, :birthday])
     |> put_password()
     |> Repo.insert()
   end
