@@ -10,12 +10,14 @@ defmodule Collab.Task do
   schema "tasks" do
     field :name, :string
     field :description, :string
+    field :requester_id, :bynary_id
+    field :volunteer_id, :bynary_id
     field :toDate, :date
 
     timestamps()
   end
 
-  @required_fields ~w(name description)
+  @required_fields ~w(name description requester_id)
   @optional_fields ~w()
 
   @doc """
