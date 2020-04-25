@@ -1,17 +1,17 @@
-defmodule Collab.Location do
-  @moduledoc """
-  Location schema
-  """
+# defmodule Collab.Location do
+#   @moduledoc """
+#   Location schema
+#   """
 
-  use Ecto.Schema
+#   use Ecto.Schema
 
-  schema "locations" do
-    field :address, :string
-    field :longitude, :float
-    field :latitude, :float
+#   schema "locations" do
+#     field :address, :string
+#     field :longitude, :float
+#     field :latitude, :float
 
-    field :location_uuid, :binary_id
+#     field :location_uuid, :binary_id
 
-    timestamps()
-  end
-end
+#     timestamps()
+#   end
+# end
