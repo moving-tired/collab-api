@@ -12,7 +12,7 @@ defmodule Collab.User do
     field :password, :string, virtual: true
     field :birthday, :date
     field :phone, :string
-
+    field :confirmed, :boolean
     field :user_uuid, :binary_id
 
     timestamps()
