@@ -13,7 +13,6 @@ defmodule Collab.User do
     field :birthday, :date
     field :phone, :string
     field :confirmed, :boolean
-    field :user_uuid, :binary_id
 
     timestamps()
   end
