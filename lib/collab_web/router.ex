@@ -2,6 +2,7 @@ defmodule CollabWeb.Router do
   use CollabWeb, :router
 
   pipeline :api do
+    plug CORSPlug, origin: "*"
     plug :accepts, ["json"]
   end
 
