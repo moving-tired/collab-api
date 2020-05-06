@@ -6,7 +6,6 @@ defmodule Collab.CreateTask do
 
   alias Collab.{Repo, Task}
 
-
   @doc """
   Creates a changeset based on the `model` and `params`.
   If `params` are nil, an invalid changeset is returned
@@ -19,6 +18,5 @@ defmodule Collab.CreateTask do
     |> foreign_key_constraint(:created_by_id)
     |> Repo.insert()
   end
-
 
 end

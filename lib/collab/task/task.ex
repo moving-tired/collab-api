@@ -6,7 +6,7 @@ defmodule Collab.Task do
   use Ecto.Schema
 
   alias Collab.User
-  
+
   schema "tasks" do
     field :name, :string
     field :description, :string

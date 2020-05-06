@@ -28,5 +28,4 @@ defmodule Collab.CreateTaskTest do
 
   end
 
-
 end
