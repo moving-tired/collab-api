@@ -10,4 +10,13 @@ defmodule CollabWeb.User.SessionView do
       }
     }
   end
+
+  def render("user.json", %{user: user}) do
+    %{
+      status: "ok",
+      data: %{
+        name: user.name
+      }
+    }
+  end
 end

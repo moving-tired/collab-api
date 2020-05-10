@@ -11,6 +11,7 @@ defmodule Collab.CreateUser do
     %User{}
     |> cast(params, [:name, :email, :password, :phone, :birthday])
     |> validate_required([:name, :email, :password, :phone, :birthday])
+    |> validate_format(:email, ~r/@/)
     |> put_password()
     |> Repo.insert()
   end

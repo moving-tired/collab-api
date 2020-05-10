@@ -4,7 +4,7 @@ defmodule CollabWeb.User.SessionController do
   alias Collab.SignInUser
   alias CollabWeb.Guardian
 
-  def create(conn, %{"email" => email, "password" => password}) do
+  def login(conn, %{"email" => email, "password" => password}) do
     case SignInUser.run(email, password) do
       {:ok, user} ->
         {:ok, token, _} = Guardian.encode_and_sign(user)
