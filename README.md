@@ -9,7 +9,14 @@ You may setup docker environment using
 
 ```bash
 
-docker-compose -f ./docker-compose-local.yml up
+make start-devenv
+
+```
+
+Don't forget to shutdown the docker compose childs when you're done with your changes:
+```bash
+
+make clear-devenv
 
 ```
 

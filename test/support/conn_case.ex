@@ -19,6 +19,8 @@ defmodule CollabWeb.ConnCase do
 
   using do
     quote do
+      import Bureaucrat.Helpers
+
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
       alias CollabWeb.Router.Helpers, as: Routes

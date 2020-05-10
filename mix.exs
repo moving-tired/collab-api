@@ -45,7 +45,9 @@ defmodule Collab.MixProject do
       {:bcrypt_elixir, "~> 2.0"},
       {:ex_machina, "~> 2.4", only: :test},
       {:guardian, "~> 2.0"},
-      {:cors_plug, "~> 1.5"}
+      {:cors_plug, "~> 1.5"},
+      {:bureaucrat, "~> 0.2.5"},
+      {:poison, "~> 3.0"}
     ]
   end
 

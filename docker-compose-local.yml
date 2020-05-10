@@ -1,6 +1,13 @@
 version: '3.5'
 
 services:
+  slate:
+    build: local-env/slate
+    ports:
+      - "4567:4567"
+      volumes:
+        - ./source:/usr/src/app/source
+
   postgres:
     container_name: postgres_container
     image: postgres

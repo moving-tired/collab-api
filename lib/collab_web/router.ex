@@ -11,6 +11,6 @@ defmodule CollabWeb.Router do
     # pending update
     resources "/users", User.UserController, except: [:new, :index, :edit, :update]
     resources "/tasks", Task.TaskController, except: [:new, :index, :edit, :update]
-    post("/user/sign_in", User.SessionController, :login)
+    post("/users/sign_in", User.SessionController, :login)
   end
 end
