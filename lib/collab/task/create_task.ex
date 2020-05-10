@@ -18,5 +18,4 @@ defmodule Collab.CreateTask do
     |> foreign_key_constraint(:created_by_id)
     |> Repo.insert()
   end
-
 end

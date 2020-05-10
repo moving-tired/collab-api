@@ -12,6 +12,7 @@ defmodule Collab.CreateTaskTest do
   describe "run/1" do
     test "returns a structure when the params are valid" do
       user = insert(:user)
+
       params = %{
         name: "Ajuda ida ao supermercado",
         description: "Description ajuda",
@@ -25,7 +26,5 @@ defmodule Collab.CreateTaskTest do
       assert task.to_date == ~U[2020-05-01 11:11:11Z]
       assert task.created_by_id == user.id
     end
-
   end
-
 end
