@@ -5,6 +5,7 @@ defmodule CollabWeb.User.UserView do
     %{
       status: "ok",
       data: %{
+        id: user.id,
         name: user.name,
         email: user.email,
         phone: user.phone

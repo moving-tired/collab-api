@@ -19,6 +19,7 @@ defmodule CollabWeb.User.UserControllerTest do
       assert %{
                "status" => "ok",
                "data" => %{
+                 "id" => _,
                  "name" => "Test name",
                  "email" => "test@gmail.com",
                  "phone" => "+551999999999"

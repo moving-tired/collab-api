@@ -8,8 +8,9 @@ defmodule CollabWeb.Router do
 
   scope "/api/v1", CollabWeb do
     pipe_through :api
-    #    post("/user", User.SessionController, :create)
-    resources "/users", User.UserController, except: [:new, :index]
+    # pending update
+    resources "/users", User.UserController, except: [:new, :index, :edit, :update]
+    resources "/tasks", Task.TaskController, except: [:new, :index, :edit, :update]
     post("/user/sign_in", User.SessionController, :login)
   end
 end

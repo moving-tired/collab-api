@@ -24,4 +24,26 @@ defmodule CollabWeb.User.UserController do
         {:error, :not_found}
     end
   end
+
+  def delete(conn, %{"id" => id}) do
+    case Repo.get(User, String.to_integer(id)) do
+      %User{} = user ->
+        delete(conn, user)
+
+      nil ->
+        {:error, :not_found}
+    end
+  end
+
+  def delete(conn, user) do
+    case Repo.delete(user) do
+      {:ok, user} ->
+        render(conn, "user.json", %{user: user})
+
+      {:error, changeset} ->
+        conn
+        |> put_status(400)
+        |> json(%{error: changeset})
+    end
+  end
 end
