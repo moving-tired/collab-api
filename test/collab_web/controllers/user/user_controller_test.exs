@@ -3,7 +3,7 @@ defmodule CollabWeb.User.UserControllerTest do
 
   import Collab.Factory
 
-  describe "create/2" do
+  describe "user/2" do
     setup %{conn: conn} do
       insert(:user, id: 1, name: "John Smith", email: "john@gmail.com")
       %{conn: conn}

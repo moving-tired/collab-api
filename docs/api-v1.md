@@ -9,7 +9,7 @@
 
 ## CollabWeb.User.SessionController
 ### <a id=collabweb-user-sessioncontroller-login></a>login
-#### create/2 returns 200 when credentials are valid
+#### signin/2 returns 200 when credentials are valid
 ##### Request
 * __Method:__ POST
 * __Path:__ /api/v1/users/sign_in
@@ -31,7 +31,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3VTDhl4TCs_McAAAJj
+x-request-id: Fg3VXAYRswiHsykAAABI
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -41,13 +41,13 @@ access-control-allow-credentials: true
 {
   "status": "ok",
   "data": {
-    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjb2xsYWIiLCJleHAiOjE1OTE1Nzk5NjYsImlhdCI6MTU4OTE2MDc2NiwiaXNzIjoiY29sbGFiIiwianRpIjoiNTUyNDkzOTQtN2U3MS00NGQyLTllZTMtYzliYzI0MGVkOWM0IiwibmJmIjoxNTg5MTYwNzY1LCJzdWIiOiI0NDEiLCJ0eXAiOiJhY2Nlc3MifQ.4j79IMfVkh7ynCdcy9tAeUZyHcSL2D7JFRlKKEUQP5ec0ihWHl51V0P1BFHJvhKWWvtsYeNJF-6hRnIyFOQ81g",
+    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjb2xsYWIiLCJleHAiOjE1OTE1ODAwMzQsImlhdCI6MTU4OTE2MDgzNCwiaXNzIjoiY29sbGFiIiwianRpIjoiODIzZDZmYTctZjNjNC00OTZkLTg4MGEtNTNlZmNhNDc5NWUyIiwibmJmIjoxNTg5MTYwODMzLCJzdWIiOiI0NTQiLCJ0eXAiOiJhY2Nlc3MifQ.DWN_HALuhpDnEht4WAsY_ME-_DHRm_6ykJSScUaiFjqJC_7vC3dYufDM7j8OQ2FM1WbmmRGbmGHgm9YcfvHrOA",
     "name": "John Smith"
   }
 }
 ```
 
-#### create/2 returns 401 when email is invalid
+#### signin/2 returns 401 when email is invalid
 ##### Request
 * __Method:__ POST
 * __Path:__ /api/v1/users/sign_in
@@ -69,7 +69,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3VTEvDvPJaPqUAAAMB
+x-request-id: Fg3VXAPKJsXHtsQAAABC
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -83,7 +83,7 @@ access-control-allow-credentials: true
 
 ## CollabWeb.User.UserController
 ### <a id=collabweb-user-usercontroller-create></a>create
-#### create/2 returns 200 when credentials are valid
+#### user/2 returns 200 when credentials are valid
 ##### Request
 * __Method:__ POST
 * __Path:__ /api/v1/users
@@ -98,7 +98,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
   "password": "123456",
   "name": "Test name",
   "email": "test@gmail.com",
-  "birthday": "2020-05-11T01:32:46.853858Z"
+  "birthday": "2020-05-11T01:33:54.953296Z"
 }
 ```
 
@@ -108,7 +108,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3VTDhmLVzlaOIAAAGE
+x-request-id: Fg3VXBJbTizluDMAAAKl
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -120,14 +120,14 @@ access-control-allow-credentials: true
   "data": {
     "phone": "+551999999999",
     "name": "Test name",
-    "id": 445,
+    "id": 455,
     "email": "test@gmail.com"
   }
 }
 ```
 
 ### <a id=collabweb-user-usercontroller-show></a>show
-#### create/2 returns 200 when we try to get the user
+#### user/2 returns 200 when we try to get the user
 ##### Request
 * __Method:__ GET
 * __Path:__ /api/v1/users/1
@@ -138,7 +138,7 @@ access-control-allow-credentials: true
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3VTDyWX2LgNwQAAAGk
+x-request-id: Fg3VXAZRcoHTbfAAAACC
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -156,7 +156,7 @@ access-control-allow-credentials: true
 }
 ```
 
-#### create/2 returns 404 when we try to get the user that not exists
+#### user/2 returns 404 when we try to get the user that not exists
 ##### Request
 * __Method:__ GET
 * __Path:__ /api/v1/users/12344354
@@ -167,7 +167,7 @@ access-control-allow-credentials: true
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3VTDuDuleHsykAAACC
+x-request-id: Fg3VXAYRswXgNwQAAADE
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -180,7 +180,7 @@ access-control-allow-credentials: true
 ```
 
 ### <a id=collabweb-user-usercontroller-update></a>update
-#### create/2 returns 200 when we try to update a user
+#### user/2 returns 200 when we try to update a user
 ##### Request
 * __Method:__ PUT
 * __Path:__ /api/v1/users/1
@@ -195,7 +195,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
   "password": "123456",
   "name": "Test 2",
   "email": "test@gmail.com",
-  "birthday": "2020-05-11T01:32:47.182807Z"
+  "birthday": "2020-05-11T01:33:54.699576Z"
 }
 ```
 
@@ -205,7 +205,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3VTErrw_soHEsAAALh
+x-request-id: Fg3VXAPeF0_laOIAAABi
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -223,7 +223,7 @@ access-control-allow-credentials: true
 }
 ```
 
-#### create/2 returns 200 when we try to update a user and it doesn't exist
+#### user/2 returns 200 when we try to update a user and it doesn't exist
 ##### Request
 * __Method:__ PUT
 * __Path:__ /api/v1/users/2
@@ -238,7 +238,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
   "password": "123456",
   "name": "Test name",
   "email": "test@gmail.com",
-  "birthday": "2020-05-11T01:32:46.956018Z"
+  "birthday": "2020-05-11T01:33:54.755457Z"
 }
 ```
 
@@ -248,7 +248,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3VTD1oGb7TbfAAAADC
+x-request-id: Fg3VXAaQt80oHEsAAADk
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
