@@ -47,4 +47,5 @@ defmodule CollabWeb.User.SessionControllerTest do
       assert %{"status" => "unauthenticated"} = json_response(res, 401)
     end
   end
+
 end

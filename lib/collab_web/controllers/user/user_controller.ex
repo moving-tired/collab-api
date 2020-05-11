@@ -21,7 +21,9 @@ defmodule CollabWeb.User.UserController do
         render(conn, "user.json", %{user: user})
 
       nil ->
-        {:error, :not_found}
+        conn
+        |> put_status(404)
+        |> json(%{status: "not_found"})
     end
   end
 

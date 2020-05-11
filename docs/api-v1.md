@@ -4,6 +4,7 @@
     * [login](#collabweb-user-sessioncontroller-login)
   * [CollabWeb.User.UserController](#collabweb-user-usercontroller)
     * [create](#collabweb-user-usercontroller-create)
+    * [show](#collabweb-user-usercontroller-show)
 
 ## CollabWeb.User.SessionController
 ### <a id=collabweb-user-sessioncontroller-login></a>login
@@ -29,7 +30,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3OKJ6t0klRxdgAAAJj
+x-request-id: Fg3St3-m7DZ9RngAAAZm
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -39,7 +40,7 @@ access-control-allow-credentials: true
 {
   "status": "ok",
   "data": {
-    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjb2xsYWIiLCJleHAiOjE1OTE1NzIxMTcsImlhdCI6MTU4OTE1MjkxNywiaXNzIjoiY29sbGFiIiwianRpIjoiZmYwODQwNmUtOGFhOC00ZGZlLWE0YWUtZGZmYmZmYjU1NWFjIiwibmJmIjoxNTg5MTUyOTE2LCJzdWIiOiIxMDIiLCJ0eXAiOiJhY2Nlc3MifQ.pFALgwAYNROnNR7M69jrHxEB6xYSCIE-79WNB3HEvr08Z6iAVJbF1lHbc4RJdvtq9t-F81j2kLarJ2cSk6IGsA",
+    "token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjb2xsYWIiLCJleHAiOjE1OTE1NzcxMjksImlhdCI6MTU4OTE1NzkyOSwiaXNzIjoiY29sbGFiIiwianRpIjoiNjQ2MDg3YTItYzVhNy00Mzg4LWJkMWEtYjQ5MTVmNTA3MzhjIiwibmJmIjoxNTg5MTU3OTI4LCJzdWIiOiIxNjAiLCJ0eXAiOiJhY2Nlc3MifQ.DQJ9aPaxUOhBsTIdSEkOv3vJ4k-58WF9kYzFPJHQUhGYS-plPSSLOFVkmk9jv7HO2fh2b0bSX1BFZaIBcE2yWg",
     "name": "John Smith"
   }
 }
@@ -67,7 +68,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3OKKKLHFmHsykAAAKj
+x-request-id: Fg3St4WidBHBqs4AAAam
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -96,7 +97,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
   "password": "123456",
   "name": "Test name",
   "email": "test@gmail.com",
-  "birthday": "2020-05-10T23:21:57.351118Z"
+  "birthday": "2020-05-11T00:45:29.149048Z"
 }
 ```
 
@@ -106,7 +107,7 @@ content-type: multipart/mixed; boundary=plug_conn_test
 ```
 content-type: application/json; charset=utf-8
 cache-control: max-age=0, private, must-revalidate
-x-request-id: Fg3OKJ106zaDHVwAAAJD
+x-request-id: Fg3St4Ltz_jkP7kAAANh
 access-control-allow-origin: *
 access-control-expose-headers: 
 access-control-allow-credentials: true
@@ -118,8 +119,38 @@ access-control-allow-credentials: true
   "data": {
     "phone": "+551999999999",
     "name": "Test name",
-    "id": 104,
+    "id": 166,
     "email": "test@gmail.com"
+  }
+}
+```
+
+### <a id=collabweb-user-usercontroller-show></a>show
+#### create/2 returns 200 when we try to get the user
+##### Request
+* __Method:__ GET
+* __Path:__ /api/v1/users/1
+
+##### Response
+* __Status__: 200
+* __Response headers:__
+```
+content-type: application/json; charset=utf-8
+cache-control: max-age=0, private, must-revalidate
+x-request-id: Fg3St39btMhDpVUAAAOD
+access-control-allow-origin: *
+access-control-expose-headers: 
+access-control-allow-credentials: true
+```
+* __Response body:__
+```json
+{
+  "status": "ok",
+  "data": {
+    "phone": null,
+    "name": "John Smith",
+    "id": 1,
+    "email": "john@gmail.com"
   }
 }
 ```
