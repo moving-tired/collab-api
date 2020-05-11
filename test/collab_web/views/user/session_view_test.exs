@@ -16,5 +16,4 @@ defmodule CollabWeb.User.SessionViewTest do
              }
            } = SessionView.render("session.json", %{user: user, token: "foo"})
   end
-
 end
