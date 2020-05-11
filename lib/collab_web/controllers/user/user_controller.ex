@@ -1,7 +1,7 @@
 defmodule CollabWeb.User.UserController do
   use CollabWeb, :controller
 
-  alias Collab.{CreateUser, Repo, User}
+  alias Collab.{CreateUser, UpdateUser, Repo, User}
 
   def create(conn, params) do
     case CreateUser.run(params) do
@@ -12,6 +12,23 @@ defmodule CollabWeb.User.UserController do
         conn
         |> put_status(400)
         |> json(%{error: changeset})
+    end
+  end
+
+  def update(conn, %{"id" => id} = params) do
+    case UpdateUser.run(String.to_integer(id), params) do
+      {:ok, %User{} = user} ->
+        render(conn, "user.json", %{user: user})
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_status(400)
+        |> json(%{error: changeset})
+
+      nil ->
+        conn
+        |> put_status(404)
+        |> json(%{status: "not_found"})
     end
   end
 

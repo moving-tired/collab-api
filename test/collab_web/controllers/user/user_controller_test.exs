@@ -46,5 +46,53 @@ defmodule CollabWeb.User.UserControllerTest do
                }
              } = json_response(res, 200)
     end
+
+    test "returns 404 when we try to get the user that not exists" do
+      res = conn()
+        |> get("/api/v1/users/12344354")
+        |> doc
+
+      assert %{
+               "status" => "not_found"
+             } = json_response(res, 404)
+    end
+
+    test "returns 200 when we try to update a user" do
+      res = conn()
+        |> put("/api/v1/users/1", %{
+          "name" => "Test 2",
+          "email" => "test@gmail.com",
+          "password" => "123456",
+          "phone" => "+551999999999",
+          "birthday" => DateTime.utc_now()
+        })
+        |> doc
+
+      assert %{
+               "status" => "ok",
+               "data" => %{
+                "id" => _,
+                "name" => "Test 2",
+                "email" => "test@gmail.com",
+                "phone" => "+551999999999"
+              }
+             } = json_response(res, 200)
+    end
+
+    test "returns 200 when we try to update a user and it doesn't exist" do
+      res = conn()
+        |> put("/api/v1/users/2", %{
+          "name" => "Test name",
+          "email" => "test@gmail.com",
+          "password" => "123456",
+          "phone" => "+551999999999",
+          "birthday" => DateTime.utc_now()
+        })
+        |> doc
+
+      assert %{
+               "status" => "not_found",
+             } = json_response(res, 404)
+    end
   end
 end
