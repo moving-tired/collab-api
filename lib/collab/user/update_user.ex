@@ -8,13 +8,15 @@ defmodule Collab.UpdateUser do
   alias Collab.{Repo, UserRepo}
 
   def run(id, params) do
-    UserRepo.get_user!(id)
-    |> cast(params, [:id, :name, :email, :password, :phone, :birthday])
-    |> validate_format(:email, ~r/@/)
-    |> put_password()
-    |> Repo.update()
-  rescue
-    Ecto.NoResultsError -> nil
+    try do
+      UserRepo.get_user!(id)
+      |> cast(params, [:id, :name, :email, :password, :phone, :birthday])
+      |> validate_format(:email, ~r/@/)
+      |> put_password()
+      |> Repo.update()
+    rescue
+      Ecto.NoResultsError -> nil
+    end
   end
 
   defp put_password(%Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset) do

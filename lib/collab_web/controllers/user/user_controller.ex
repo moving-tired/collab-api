@@ -1,7 +1,7 @@
 defmodule CollabWeb.User.UserController do
   use CollabWeb, :controller
 
-  alias Collab.{CreateUser, Repo, UpdateUser, User}
+  alias Collab.{CreateUser, UpdateUser, Repo, User}
 
   def create(conn, params) do
     case CreateUser.run(params) do
@@ -15,7 +15,6 @@ defmodule CollabWeb.User.UserController do
     end
   end
 
-  @spec update(Plug.Conn.t(), map) :: Plug.Conn.t()
   def update(conn, %{"id" => id} = params) do
     case UpdateUser.run(String.to_integer(id), params) do
       {:ok, %User{} = user} ->
