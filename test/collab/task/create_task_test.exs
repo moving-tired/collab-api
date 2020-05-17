@@ -17,7 +17,8 @@ defmodule Collab.CreateTaskTest do
         name: "Ajuda ida ao supermercado",
         description: "Description ajuda",
         to_date: ~U[2020-05-01 11:11:11Z],
-        created_by_id: user.id
+        created_by_id: user.id,
+        location: %{latitude: 11.1, longitude: 11.1}
       }
 
       assert {:ok, %Task{} = task} = CreateTask.run(params)
@@ -25,6 +26,8 @@ defmodule Collab.CreateTaskTest do
       assert task.description == "Description ajuda"
       assert task.to_date == ~U[2020-05-01 11:11:11Z]
       assert task.created_by_id == user.id
+      assert task.location.latitude == 11.1
+      assert task.location.longitude == 11.1
     end
   end
 end

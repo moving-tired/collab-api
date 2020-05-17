@@ -10,13 +10,16 @@ defmodule Collab.CreateUserTest do
         email: "nogs@nogs.com",
         password: "123456",
         phone: "+551999999999",
-        birthday: DateTime.utc_now()
+        birthday: DateTime.utc_now(),
+        location: %{latitude: 11.1, longitude: 11.1}
       }
 
       assert {:ok, %User{} = user} = CreateUser.run(params)
       assert user.name == "nogs"
       assert user.email == "nogs@nogs.com"
       assert user.password_hash != "123456"
+      assert user.location.latitude == 11.1
+      assert user.location.longitude == 11.1
     end
 
     test "returns error when name is missing" do

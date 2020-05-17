@@ -18,7 +18,7 @@ defmodule Collab.Factory do
       name: "Ajuda ida ao supermercado",
       description: "Description ajuda",
       to_date: ~U[2020-05-01 11:11:11Z],
-      created_by: build(:admin)
+      created_by: build(:user)
     }
   end
 end
