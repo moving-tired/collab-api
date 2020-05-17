@@ -7,5 +7,6 @@ defmodule Collab.UserRepo do
 
   def get_user!(id) do
     Repo.get!(User, id)
+    |> Repo.preload(:location)
   end
 end

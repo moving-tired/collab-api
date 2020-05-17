@@ -5,6 +5,8 @@ defmodule Collab.User do
 
   use Ecto.Schema
 
+  alias Collab.Location
+
   schema "users" do
     field :email, :string
     field :name, :string
@@ -13,6 +15,7 @@ defmodule Collab.User do
     field :birthday, :date
     field :phone, :string
     field :confirmed, :boolean
+    belongs_to :location, Location
 
     timestamps()
   end

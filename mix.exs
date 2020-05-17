@@ -47,7 +47,7 @@ defmodule Collab.MixProject do
       {:guardian, "~> 2.0"},
       {:cors_plug, "~> 1.5"},
       {:bureaucrat, "~> 0.2.5"},
-      {:poison, "~> 3.0"}
+      {:poison, "~> 3.1"}
     ]
   end
 

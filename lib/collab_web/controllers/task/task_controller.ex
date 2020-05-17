@@ -1,7 +1,7 @@
 defmodule CollabWeb.Task.TaskController do
   use CollabWeb, :controller
 
-  alias Collab.{CreateTask, Repo, Task}
+  alias Collab.{CreateTask, Repo, Task, UpdateTask}
 
   def create(conn, params) do
     case CreateTask.run(params) do
@@ -11,7 +11,24 @@ defmodule CollabWeb.Task.TaskController do
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_status(400)
-        |> json(%{error: changeset})
+        |> render(CollabWeb.ErrorView, "error.json", changeset: changeset)
+    end
+  end
+
+  def update(conn, %{"id" => id} = params) do
+    case UpdateTask.run(String.to_integer(id), params) do
+      {:ok, %Task{} = task} ->
+        render(conn, "task.json", %{task: task})
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        conn
+        |> put_status(400)
+        |> render(CollabWeb.ErrorView, "error.json", changeset: changeset)
+
+      nil ->
+        conn
+        |> put_status(404)
+        |> json(%{status: "not_found"})
     end
   end
 
@@ -21,7 +38,9 @@ defmodule CollabWeb.Task.TaskController do
         render(conn, "task.json", %{task: task})
 
       nil ->
-        {:error, :not_found}
+        conn
+        |> put_status(404)
+        |> json(%{status: "not_found"})
     end
   end
 
@@ -31,7 +50,9 @@ defmodule CollabWeb.Task.TaskController do
         delete(conn, task)
 
       nil ->
-        {:error, :not_found}
+        conn
+        |> put_status(404)
+        |> json(%{status: "not_found"})
     end
   end
 
@@ -43,7 +64,7 @@ defmodule CollabWeb.Task.TaskController do
       {:error, changeset} ->
         conn
         |> put_status(400)
-        |> json(%{error: changeset})
+        |> render(CollabWeb.ErrorView, "error.json", changeset: changeset)
     end
   end
 end

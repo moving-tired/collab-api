@@ -11,11 +11,10 @@ defmodule CollabWeb.User.UserController do
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_status(400)
-        |> json(%{error: changeset})
+        |> render(CollabWeb.ErrorView, "error.json", changeset: changeset)
     end
   end
 
-  @spec update(Plug.Conn.t(), map) :: Plug.Conn.t()
   def update(conn, %{"id" => id} = params) do
     case UpdateUser.run(String.to_integer(id), params) do
       {:ok, %User{} = user} ->
@@ -24,7 +23,7 @@ defmodule CollabWeb.User.UserController do
       {:error, %Ecto.Changeset{} = changeset} ->
         conn
         |> put_status(400)
-        |> json(%{error: changeset})
+        |> render(CollabWeb.ErrorView, "error.json", changeset: changeset)
 
       nil ->
         conn
@@ -51,7 +50,9 @@ defmodule CollabWeb.User.UserController do
         delete(conn, user)
 
       nil ->
-        {:error, :not_found}
+        conn
+        |> put_status(404)
+        |> json(%{status: "not_found"})
     end
   end
 
@@ -63,7 +64,7 @@ defmodule CollabWeb.User.UserController do
       {:error, changeset} ->
         conn
         |> put_status(400)
-        |> json(%{error: changeset})
+        |> render(CollabWeb.ErrorView, "error.json", changeset: changeset)
     end
   end
 end
