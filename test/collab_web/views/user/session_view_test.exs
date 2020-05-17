@@ -6,12 +6,13 @@ defmodule CollabWeb.User.SessionViewTest do
   import Collab.Factory
 
   test "render/2 returns ok and the user data" do
-    user = params_for(:user, name: "Joe Smith")
+    user = %Collab.User{ name: "Joe Smith", id: 1 }
 
     assert %{
              status: "ok",
              data: %{
                name: "Joe Smith",
+               id: 1,
                token: "foo"
              }
            } = SessionView.render("session.json", %{user: user, token: "foo"})

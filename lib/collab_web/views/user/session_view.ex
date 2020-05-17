@@ -6,6 +6,7 @@ defmodule CollabWeb.User.SessionView do
       status: "ok",
       data: %{
         name: user.name,
+        id: user.id,
         token: token
       }
     }
@@ -15,6 +16,7 @@ defmodule CollabWeb.User.SessionView do
     %{
       status: "ok",
       data: %{
+        id: user.id,
         name: user.name
       }
     }
