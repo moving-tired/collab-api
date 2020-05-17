@@ -8,16 +8,14 @@ defmodule Collab.UpdateUser do
   alias Collab.{Location, Repo, UserRepo}
 
   def run(id, params) do
-    try do
-      UserRepo.get_user!(id)
-      |> cast(params, [:id, :name, :email, :password, :phone, :birthday])
-      |> validate_format(:email, ~r/@/)
-      |> put_password()
-      |> cast_assoc(:location, with: &Location.changeset/2)
-      |> Repo.update()
-    rescue
-      Ecto.NoResultsError -> nil
-    end
+    UserRepo.get_user!(id)
+    |> cast(params, [:id, :name, :email, :password, :phone, :birthday])
+    |> validate_format(:email, ~r/@/)
+    |> put_password()
+    |> cast_assoc(:location, with: &Location.changeset/2)
+    |> Repo.update()
+  rescue
+    Ecto.NoResultsError -> nil
   end
 
   defp put_password(
