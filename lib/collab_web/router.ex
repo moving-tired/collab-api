@@ -12,7 +12,5 @@ defmodule CollabWeb.Router do
     resources "/users", User.UserController, except: [:new, :index, :edit]
     resources "/tasks", Task.TaskController, except: [:new, :index, :edit]
     post("/users/sign_in", User.SessionController, :login)
-
-    resources "/tasks", Task.TaskController, except: [:new, :index, :edit, :update]
   end
 end
