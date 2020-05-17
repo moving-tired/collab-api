@@ -14,18 +14,18 @@ defmodule CollabWeb.User.TaskControllerTest do
       res =
         build_conn()
         |> post(
-             "/api/v1/tasks",
-             %{
-               "name" => "Test name",
-               "description" => "description",
-               "created_by_id" => "1",
-               "to_date" => DateTime.utc_now(),
-               "location" => %{
-                 latitude: 11.1,
-                 longitude: 11.1
-               }
-             }
-           )
+          "/api/v1/tasks",
+          %{
+            "name" => "Test name",
+            "description" => "description",
+            "created_by_id" => "1",
+            "to_date" => DateTime.utc_now(),
+            "location" => %{
+              latitude: 11.1,
+              longitude: 11.1
+            }
+          }
+        )
         |> doc
 
       assert %{
@@ -76,12 +76,12 @@ defmodule CollabWeb.User.TaskControllerTest do
       res =
         conn()
         |> put(
-             "/api/v1/tasks/1",
-             %{
-               "name" => "Test name2",
-               "description" => "description2",
-             }
-           )
+          "/api/v1/tasks/1",
+          %{
+            "name" => "Test name2",
+            "description" => "description2"
+          }
+        )
         |> doc
 
       assert %{
@@ -99,16 +99,16 @@ defmodule CollabWeb.User.TaskControllerTest do
       res =
         conn()
         |> put(
-             "/api/v1/tasks/1",
-             %{
-               "name" => "Test name2",
-               "description" => "description2",
-               "location" => %{
-                 latitude: 11.1,
-                 longitude: 11.1
-               }
-             }
-           )
+          "/api/v1/tasks/1",
+          %{
+            "name" => "Test name2",
+            "description" => "description2",
+            "location" => %{
+              latitude: 11.1,
+              longitude: 11.1
+            }
+          }
+        )
         |> doc
 
       assert %{
@@ -129,12 +129,12 @@ defmodule CollabWeb.User.TaskControllerTest do
       res =
         conn()
         |> put(
-             "/api/v1/tasks/22222",
-             %{
-               "name" => "Test name2",
-               "description" => "description2"
-             }
-           )
+          "/api/v1/tasks/22222",
+          %{
+            "name" => "Test name2",
+            "description" => "description2"
+          }
+        )
         |> doc
 
       assert %{

@@ -19,7 +19,7 @@ defmodule CollabWeb.Task.TaskView do
     %{}
   end
 
-  #todo
+  # todo
   defp location_json(%Ecto.Association.NotLoaded{}) do
     %{}
   end
@@ -30,5 +30,4 @@ defmodule CollabWeb.Task.TaskView do
       longitude: location.longitude
     }
   end
-
 end

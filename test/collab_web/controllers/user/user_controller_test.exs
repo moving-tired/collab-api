@@ -13,19 +13,19 @@ defmodule CollabWeb.User.UserControllerTest do
       res =
         build_conn()
         |> post(
-             "/api/v1/users",
-             %{
-               "name" => "Test name",
-               "email" => "test@gmail.com",
-               "password" => "123456",
-               "phone" => "+551999999999",
-               "birthday" => DateTime.utc_now(),
-               "location" => %{
-                 latitude: 11.1,
-                 longitude: 11.1
-               }
-             }
-           )
+          "/api/v1/users",
+          %{
+            "name" => "Test name",
+            "email" => "test@gmail.com",
+            "password" => "123456",
+            "phone" => "+551999999999",
+            "birthday" => DateTime.utc_now(),
+            "location" => %{
+              latitude: 11.1,
+              longitude: 11.1
+            }
+          }
+        )
         |> doc
 
       assert %{
@@ -76,15 +76,15 @@ defmodule CollabWeb.User.UserControllerTest do
       res =
         conn()
         |> put(
-             "/api/v1/users/1",
-             %{
-               "name" => "Test 2",
-               "email" => "test@gmail.com",
-               "password" => "123456",
-               "phone" => "+551999999999",
-               "birthday" => DateTime.utc_now()
-             }
-           )
+          "/api/v1/users/1",
+          %{
+            "name" => "Test 2",
+            "email" => "test@gmail.com",
+            "password" => "123456",
+            "phone" => "+551999999999",
+            "birthday" => DateTime.utc_now()
+          }
+        )
         |> doc
 
       assert %{
@@ -102,19 +102,19 @@ defmodule CollabWeb.User.UserControllerTest do
       res =
         conn()
         |> put(
-             "/api/v1/users/1",
-             %{
-               "name" => "Test 2",
-               "email" => "test@gmail.com",
-               "password" => "123456",
-               "phone" => "+551999999999",
-               "birthday" => DateTime.utc_now(),
-               "location" => %{
-                 latitude: 11.1,
-                 longitude: 11.1
-               }
-             }
-           )
+          "/api/v1/users/1",
+          %{
+            "name" => "Test 2",
+            "email" => "test@gmail.com",
+            "password" => "123456",
+            "phone" => "+551999999999",
+            "birthday" => DateTime.utc_now(),
+            "location" => %{
+              latitude: 11.1,
+              longitude: 11.1
+            }
+          }
+        )
         |> doc
 
       assert %{
@@ -136,15 +136,15 @@ defmodule CollabWeb.User.UserControllerTest do
       res =
         conn()
         |> put(
-             "/api/v1/users/2",
-             %{
-               "name" => "Test name",
-               "email" => "test@gmail.com",
-               "password" => "123456",
-               "phone" => "+551999999999",
-               "birthday" => DateTime.utc_now()
-             }
-           )
+          "/api/v1/users/2",
+          %{
+            "name" => "Test name",
+            "email" => "test@gmail.com",
+            "password" => "123456",
+            "phone" => "+551999999999",
+            "birthday" => DateTime.utc_now()
+          }
+        )
         |> doc
 
       assert %{

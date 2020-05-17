@@ -18,7 +18,7 @@ defmodule CollabWeb.User.UserView do
     %{}
   end
 
-  #todo
+  # todo
   defp location_json(%Ecto.Association.NotLoaded{}) do
     %{}
   end
@@ -29,5 +29,4 @@ defmodule CollabWeb.User.UserView do
       longitude: location.longitude
     }
   end
-
 end
