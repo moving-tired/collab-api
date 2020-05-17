@@ -4,7 +4,7 @@ defmodule Collab.Task do
   """
 
   use Ecto.Schema
-  alias Collab.{User, Location}
+  alias Collab.{Location, User}
 
   schema "tasks" do
     field :name, :string

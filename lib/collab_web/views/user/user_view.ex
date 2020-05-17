@@ -17,7 +17,7 @@ defmodule CollabWeb.User.UserView do
   defp location_json(nil) do
     %{}
   end
-  
+
   #todo
   defp location_json(%Ecto.Association.NotLoaded{}) do
     %{}

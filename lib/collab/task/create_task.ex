@@ -4,7 +4,7 @@ defmodule Collab.CreateTask do
   """
   import Ecto.Changeset
 
-  alias Collab.{Repo, Task, Location}
+  alias Collab.{Location, Repo, Task}
 
   @doc """
   Creates a changeset based on the `model` and `params`.

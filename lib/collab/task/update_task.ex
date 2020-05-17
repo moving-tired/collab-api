@@ -5,7 +5,7 @@ defmodule Collab.UpdateTask do
 
   import Ecto.Changeset
 
-  alias Collab.{Repo, TaskRepo, Location}
+  alias Collab.{Location, Repo, TaskRepo}
 
   def run(id, params) do
     try do

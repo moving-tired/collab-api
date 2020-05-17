@@ -1,7 +1,7 @@
 defmodule CollabWeb.User.UserController do
   use CollabWeb, :controller
 
-  alias Collab.{CreateUser, UpdateUser, Repo, User}
+  alias Collab.{CreateUser, Repo, UpdateUser, User}
 
   def create(conn, params) do
     case CreateUser.run(params) do

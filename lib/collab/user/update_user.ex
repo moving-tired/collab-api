@@ -5,7 +5,7 @@ defmodule Collab.UpdateUser do
 
   import Ecto.Changeset
 
-  alias Collab.{Repo, UserRepo, Location}
+  alias Collab.{Location, Repo, UserRepo}
 
   def run(id, params) do
     try do
