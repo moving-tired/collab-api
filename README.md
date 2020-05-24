@@ -33,6 +33,12 @@ Run migrations
 mix ecto.migrate
 ```
 
+If you have issue compiling bcrypt in Mac:
+
+```bash
+(cd deps/bcrypt_elixir && make clean && make) && mix deps.compile
+```
+
 ## Running application
 
 ```bash

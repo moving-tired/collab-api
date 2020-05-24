@@ -3,29 +3,39 @@ defmodule CollabWeb.User.TaskControllerTest do
 
   import Collab.Factory
 
+  alias CollabWeb.Guardian
+
   describe "task/2" do
     setup %{conn: conn} do
-      insert(:user, id: 1, name: "John Smith", email: "john@gmail.com")
+      insert(:user, id: 1, password: "123456", name: "John Smith", email: "john@gmail.com")
       insert(:task, id: 1, name: "test task", description: "description")
-      %{conn: conn}
+
+      user = {:ok, jwt, _claims} = Guardian.encode_and_sign(:user)
+
+      conn =
+        conn
+        |> put_req_header("accept", "application/json")
+        |> put_req_header("authorization", "Bearer #{jwt}")
+
+      {:ok, conn: conn}
     end
 
     test "returns 200 when we create a task" do
       res =
-        build_conn()
+        conn()
         |> post(
-          "/api/v1/tasks",
-          %{
-            "name" => "Test name",
-            "description" => "description",
-            "created_by_id" => "1",
-            "to_date" => DateTime.utc_now(),
-            "location" => %{
-              latitude: 11.1,
-              longitude: 11.1
-            }
-          }
-        )
+             "/api/v1/tasks",
+             %{
+               "name" => "Test name",
+               "description" => "description",
+               "created_by_id" => "1",
+               "to_date" => DateTime.utc_now(),
+               "location" => %{
+                 latitude: 11.1,
+                 longitude: 11.1
+               }
+             }
+           )
         |> doc
 
       assert %{
@@ -76,12 +86,12 @@ defmodule CollabWeb.User.TaskControllerTest do
       res =
         conn()
         |> put(
-          "/api/v1/tasks/1",
-          %{
-            "name" => "Test name2",
-            "description" => "description2"
-          }
-        )
+             "/api/v1/tasks/1",
+             %{
+               "name" => "Test name2",
+               "description" => "description2"
+             }
+           )
         |> doc
 
       assert %{
@@ -99,16 +109,16 @@ defmodule CollabWeb.User.TaskControllerTest do
       res =
         conn()
         |> put(
-          "/api/v1/tasks/1",
-          %{
-            "name" => "Test name2",
-            "description" => "description2",
-            "location" => %{
-              latitude: 11.1,
-              longitude: 11.1
-            }
-          }
-        )
+             "/api/v1/tasks/1",
+             %{
+               "name" => "Test name2",
+               "description" => "description2",
+               "location" => %{
+                 latitude: 11.1,
+                 longitude: 11.1
+               }
+             }
+           )
         |> doc
 
       assert %{
@@ -129,12 +139,12 @@ defmodule CollabWeb.User.TaskControllerTest do
       res =
         conn()
         |> put(
-          "/api/v1/tasks/22222",
-          %{
-            "name" => "Test name2",
-            "description" => "description2"
-          }
-        )
+             "/api/v1/tasks/22222",
+             %{
+               "name" => "Test name2",
+               "description" => "description2"
+             }
+           )
         |> doc
 
       assert %{

@@ -12,6 +12,7 @@ defmodule Collab.CreateUser do
     |> cast(params, [:name, :email, :password, :phone, :birthday])
     |> validate_required([:name, :email, :password, :phone, :birthday])
     |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
     |> put_password()
     |> cast_assoc(:location, required: false, with: &Location.changeset/2)
     |> Repo.insert()

@@ -12,10 +12,13 @@ defmodule CollabWeb.User.SessionControllerTest do
     test "returns 200 when credentials are valid" do
       res =
         build_conn()
-        |> post("/api/v1/users/sign_in", %{
-          "email" => "john@gmail.com",
-          "password" => "123456"
-        })
+        |> post(
+             "/api/v1/users/sign_in",
+             %{
+               "email" => "john@gmail.com",
+               "password" => "123456"
+             }
+           )
         |> doc
 
       assert %{
@@ -30,10 +33,13 @@ defmodule CollabWeb.User.SessionControllerTest do
     test "returns 401 when email is invalid" do
       res =
         build_conn()
-        |> post("/api/v1/users/sign_in", %{
-          "email" => "johnX@gmail.com",
-          "password" => "123456"
-        })
+        |> post(
+             "/api/v1/users/sign_in",
+             %{
+               "email" => "johnX@gmail.com",
+               "password" => "123456"
+             }
+           )
         |> doc
 
       assert %{"status" => "unauthenticated"} = json_response(res, 401)
@@ -41,10 +47,14 @@ defmodule CollabWeb.User.SessionControllerTest do
 
     test "returns 401 when password is invalid" do
       res =
-        post(build_conn(), "/api/v1/users/sign_in", %{
-          "email" => "john@gmail.com",
-          "password" => "X123456"
-        })
+        post(
+          build_conn(),
+          "/api/v1/users/sign_in",
+          %{
+            "email" => "john@gmail.com",
+            "password" => "X123456"
+          }
+        )
 
       assert %{"status" => "unauthenticated"} = json_response(res, 401)
     end

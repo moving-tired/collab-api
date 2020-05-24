@@ -9,6 +9,28 @@ defmodule CollabWeb.User.UserControllerTest do
       %{conn: conn}
     end
 
+    test "must fail when email already exists" do
+      res =
+        build_conn()
+        |> post(
+             "/api/v1/users",
+             %{
+               "name" => "DuplicatedEmail",
+               "email" => "john@gmail.com",
+               "password" => "123456",
+               "phone" => "+551999999999",
+               "birthday" => DateTime.utc_now()
+             }
+           )
+        |> doc
+
+      assert %{"errors" => %{
+              "email" => ["has already been taken"]
+             }}
+             = json_response(res, 400)
+
+    end
+
     test "returns 200 when we create a user" do
       res =
         build_conn()
